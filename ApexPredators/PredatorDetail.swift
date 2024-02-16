@@ -18,6 +18,7 @@ struct PredatorDetail: View {
             ScrollView{
                 ZStack(alignment: .bottomTrailing){
                     //Background image
+                    
                     Image(predator.type.rawValue)
                         .resizable()
                         .scaledToFit()
@@ -28,17 +29,23 @@ struct PredatorDetail: View {
                             ], startPoint: .top, endPoint: .bottom)
                         }
                     
+                    
                     //Dino image
-                    Image(predator.image)
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: geo.size.width/1.5, height: geo.size.height/3)
-                        .scaleEffect(x: -1)
-                        .shadow(color: /*@START_MENU_TOKEN@*/.black/*@END_MENU_TOKEN@*/, radius: 7)
-                        .offset(y: 20)
+                    NavigationLink{
+                        Image(predator.image)
+                            .resizable()
+                            .scaledToFit()
+                            .scaleEffect(x: -1)
+                    }label: {
+                        Image(predator.image)
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: geo.size.width/1.5, height: geo.size.height/3)
+                            .scaleEffect(x: -1)
+                            .shadow(color: /*@START_MENU_TOKEN@*/.black/*@END_MENU_TOKEN@*/, radius: 7)
+                            .offset(y: 20)
+                    }
                 }
-                
-                
                 
                 // Dino name
                 VStack(alignment: .leading){

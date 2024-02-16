@@ -25,6 +25,9 @@ struct PredatorMap: View {
                         .frame(height: 100)
                         .shadow(color: .white, radius: 3)
                         .scaleEffect(x: -1)
+                        .onTapGesture {
+                            
+                        }
                 }
             }
         }

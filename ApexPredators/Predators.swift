@@ -15,6 +15,7 @@ class Predators{
         decodeApexPredetorData()
     }
     
+    
     func decodeApexPredetorData(){
         if let url = Bundle.main.url(forResource: "jpapexpredators", withExtension: "json"){
             
@@ -50,14 +51,16 @@ class Predators{
         }
     }
     
-    func filter(by type: PredatorType) {
+    
+    func filter(type: PredatorType, movie: Movies) {
+        print(type)
         if type == .all{
             apexPredators = allApexPredators
             }else{
                 apexPredators = allApexPredators.filter{ predator in
-                    predator.type == type
+                    predator.type == type && predator.movies.contains(movie.movieName)
                 }
             }
-        }
     }
-
+    
+    }

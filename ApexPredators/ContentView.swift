@@ -14,43 +14,47 @@ struct ContentView: View {
     @State var searchText = ""
     @State var alphabetical = false
     @State var currentSelection = PredatorType.all
+    @State var currentMovieSelection = Movies.all
     
     var filteredDinos: [ApexPredator]{
-        predators.filter(by: currentSelection)
+        predators.filter(type: currentSelection, movie: currentMovieSelection)
         predators.sort(by: alphabetical)
         return predators.search(for: searchText)
     }
     
+    
     var body: some View {
         NavigationStack {
-            List(filteredDinos){predator in
-                NavigationLink{
-                    PredatorDetail(predator: predator, position: .camera(MapCamera(centerCoordinate: predator.location, distance: 3000)))
-                }label: {
-                    HStack{
-                        Image(predator.image)
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 100, height: 100)
-                        
-                        
-                        VStack(alignment: .leading){
-                            Text(predator.name)
-                                .fontWeight(.bold)
+            List{
+                
+                ForEach(filteredDinos){ predator in
+                    NavigationLink{
+                        PredatorDetail(predator: predator, position: .camera(MapCamera(centerCoordinate: predator.location, distance: 3000)))
+                    }label: {
+                        HStack{
+                            Image(predator.image)
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 100, height: 100)
                             
-                            Button{
+                            VStack(alignment: .leading){
+                                Text(predator.name)
+                                    .fontWeight(.bold)
                                 
-                            }label: {
-                                Text(predator.type.rawValue.capitalized)
+                                Button{
+                                    
+                                }label: {
+                                    Text(predator.type.rawValue.capitalized)
+                                }
+                                .font(.subheadline)
+                                .buttonStyle(.borderedProminent)
+                                .tint(predator.type.background)
+                                .buttonBorderShape(.capsule)
+                                .foregroundColor(.white)
+                                .fontWeight(.semibold)
+                                .padding(.horizontal, 13)
+                                .padding(.vertical, 5)
                             }
-                            .font(.subheadline)
-                            .buttonStyle(.borderedProminent)
-                            .tint(predator.type.background)
-                            .buttonBorderShape(.capsule)
-                            .foregroundColor(.white)
-                            .fontWeight(.semibold)
-                            .padding(.horizontal, 13)
-                            .padding(.vertical, 5)
                         }
                     }
                 }
@@ -61,6 +65,7 @@ struct ContentView: View {
             .animation(.default, value: searchText)
             .toolbar{
                 ToolbarItem(placement: .topBarLeading){
+                    
                     Button{
                         withAnimation{
                             alphabetical.toggle()
@@ -74,6 +79,20 @@ struct ContentView: View {
                     }
                 }
                 
+                ToolbarItem(placement: .topBarTrailing){
+                    Menu{
+                        Picker("MovieFilter", selection: $currentMovieSelection.animation()){
+                            ForEach(Movies.allCases){ type in
+                                Label(type.rawValue, systemImage: "")
+                                    .font(.footnote)
+                            }
+                        }
+                    } label: {
+                        Image(systemName: "popcorn")
+                            .fontWeight(.bold)
+                            .foregroundColor(.orange)
+                    }
+                }
                 
                 ToolbarItem(placement: .topBarTrailing){
                     Menu{
@@ -90,7 +109,7 @@ struct ContentView: View {
                 }
             }
         }
-        .preferredColorScheme(/*@START_MENU_TOKEN@*/.dark/*@END_MENU_TOKEN@*/)
+        .preferredColorScheme(.dark)
     }
 }
 

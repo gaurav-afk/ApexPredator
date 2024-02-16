@@ -62,3 +62,29 @@ enum PredatorType: String, Decodable, CaseIterable, Identifiable{
         }
     }
 }
+
+
+enum Movies: String, Decodable, CaseIterable, Identifiable{
+    case all
+    case JurassicPark
+    case TheLostWorldJurassicPark
+    case JurassicParkIII
+    case JurassicWorld
+    case JurassicWorldFallenKingdom
+    case JurassicWorldDominion
+   
+    
+    var id: Movies {self}
+    
+    var movieName: String{
+        switch self{
+        case .all: "All"
+        case .JurassicPark: "Jurassic Park"
+        case .TheLostWorldJurassicPark: "The Lost World: Jurassic Park"
+        case .JurassicParkIII: "Jurassic Park III"
+        case .JurassicWorld: "Jurassic World"
+        case .JurassicWorldFallenKingdom: "Jurassic World: Fallen Kingdom"
+        case .JurassicWorldDominion: "Jurassic World: Dominion"
+        }
+    }
+}
