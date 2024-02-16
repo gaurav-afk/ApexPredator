@@ -6,7 +6,10 @@ Explore the characteristics, behaviors, and history of each dinosaur with our co
 
 Whether you're a seasoned paleontologist or a curious enthusiast, Jurassic Park Creature Encounter offers an immersive experience that will transport you back in time to an era when dinosaurs ruled the Earth. Get ready to witness the wonders of Jurassic Park in the palm of your hand!
 
+<img src="https://github.com/gaurav-afk/ApexPredator/assets/65609530/a9eddaf4-67b8-48f4-b02b-6ea1c784ac21" width="250" height="500">
+<img src="https://github.com/gaurav-afk/ApexPredator/assets/65609530/4b558f97-97dc-40a6-9e40-3ad1ce9f3dca" width="250" height="500">
 <img src="https://github.com/gaurav-afk/ApexPredator/assets/65609530/89c0f0a5-7bd6-4c50-ab9a-2107dae0111c" width="250" height="500">
+
 <img src="https://github.com/gaurav-afk/ApexPredator/assets/65609530/a054bdda-7492-4f1e-ad7c-d5587d207742" width="250" height="500">
 <img src="https://github.com/gaurav-afk/ApexPredator/assets/65609530/6b76deff-4d69-4434-871c-01cd71bd3954" width="250" height="500">
 <img src="https://github.com/gaurav-afk/ApexPredator/assets/65609530/763ff4dd-55dc-4852-ac4e-5959518feab1" width="250" height="500">
