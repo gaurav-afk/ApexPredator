@@ -54,13 +54,22 @@ class Predators{
     
     func filter(type: PredatorType, movie: Movies) {
         print(type)
-        if type == .all{
+        if type == .all && movie == .all{
             apexPredators = allApexPredators
-            }else{
-                apexPredators = allApexPredators.filter{ predator in
-                    predator.type == type && predator.movies.contains(movie.movieName)
-                }
+        }
+        else if type == .all && movie != .all{
+            apexPredators = allApexPredators.filter{ predator in
+                predator.movies.contains(movie.movieName)
             }
-    }
-    
+        }else if type != .all && movie == .all{
+                apexPredators = allApexPredators.filter{ predator in
+                    predator.type == type
+          }
+        }
+        else{
+            apexPredators = allApexPredators.filter{ predator in
+                predator.type == type && predator.movies.contains(movie.movieName)
+          }
+        }
+      }
     }
